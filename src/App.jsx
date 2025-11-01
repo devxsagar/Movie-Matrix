@@ -1,10 +1,12 @@
-import { Button } from "@chakra-ui/react";
 import React from "react";
+import { Navbar } from "./components/Navbar";
+import { Outlet } from "react-router-dom";
 
 const App = () => {
   return (
-    <div >
-      <h1>Hello World</h1>
+    <div>
+      <Navbar />
+      <Outlet />
     </div>
   );
 };
