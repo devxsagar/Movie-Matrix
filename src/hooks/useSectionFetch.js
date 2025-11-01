@@ -1,22 +1,27 @@
 import { useEffect, useState } from "react";
-import { API_OPTIONS } from "../utils/constant"
+import { API_OPTIONS } from "../utils/constant";
 
-const useSectionFetch = ({ category, mediaType }) => {
-    const [data, setData] = useState(null);
+const useSectionFetch = ({ category, mediaType, page = 1 }) => {
+  const [data, setData] = useState(null);
 
   const getData = async () => {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/${category}/${mediaType}/day?language=en-US`,
-      API_OPTIONS
-    );
-    const json = await response.json();
-    setData(json.results);
+    try {
+      let url = "";
+      if (category === "trending") {
+        url = `https://api.themoviedb.org/3/trending/${mediaType}/day?language=en-US&page=${page}`;
+      } else {
+        url = `https://api.themoviedb.org/3/${mediaType}/${category}?language=en-US&page=${page}`;
+      }
+      const response = await fetch(url, API_OPTIONS);
+      const json = await response.json();
+      setData(json.results);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
-
   useEffect(() => {
     getData();
   }, []);
-
 
   return data;
 };
