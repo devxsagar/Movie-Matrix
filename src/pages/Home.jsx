@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import { API_OPTIONS } from "@/utils/constant";
 import React, { useEffect, useState } from "react";
+import Details from "./Details";
 
 const Home = () => {
     const [ trendingData, setTrendingData ] = useState(null);
