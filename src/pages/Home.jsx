@@ -14,7 +14,6 @@ const Home = () => {
     );
     const data = await fetchData.json();
     setTrendingData(data.results);
-    console.log(data);
   };
 
   useEffect(() => {

@@ -20,7 +20,8 @@ const Hero = ({ data }) => {
   }
 
   return (
-      <div className="absolute left-1/2 -translate-x-1/2 top-0  w-full max-w-[1536px]">
+    <div className="mt-[70vh] lg:mb-[95vh]">
+      <div className="absolute left-1/2 -translate-x-1/2 top-0  w-full max-w-[1536px] lg:mb-[95vh]">
         <Carousel className="relative">
           {/* Carousel Content */}
           <CarouselContent>
@@ -39,7 +40,7 @@ const Hero = ({ data }) => {
                     {/* Overlay */}
                     <div className="absolute inset-0 z-80 w-full h-full bg-black/40" />
 
-                    <div className="absolute left-0 bottom-0 z-80 w-full h-30 bg-gradient-to-b from-transparent to-black" />
+                    <div className="absolute left-0 bottom-0 z-80 w-full h-30 bg-linear-to-b from-transparent via-black/70 to-black" />
 
                     {/* Text Content */}
                     <div className="max-w-4xl absolute  left-0 bottom-4 md:left-25 md:bottom-20 xl:left-40 xl:top-1/2 xl:-translate-y-1/2 z-90 p-5">
@@ -100,6 +101,7 @@ const Hero = ({ data }) => {
           <CarouselNext className="absolute right-5 bg-transparent" />
         </Carousel>
       </div>
+    </div>
   );
 };
 
