@@ -13,7 +13,7 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="relative py-5 lg:p-6 flex items-center justify-between rounded-3xl mt-5 backdrop-blur-lg">
+    <nav className="relative py-5 lg:py-6 flex items-center justify-between rounded-3xl mt-5 backdrop-blur-lg">
       <h1 className="text-2xl font-bold">Movie Matrix</h1>
 
       {/* Links for Desktop */}
