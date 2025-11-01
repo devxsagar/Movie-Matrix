@@ -4,6 +4,7 @@ import { Input } from "./ui/input";
 import { IoSearch } from "react-icons/io5";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { RxCross2, RxHamburgerMenu } from "react-icons/rx";
+import { PROFILE_PIC_URL } from "@/utils/constant";
 
 export const Navbar = () => {
   const [menuClicked, setMenuClicked] = useState(false);
@@ -32,7 +33,7 @@ export const Navbar = () => {
         <div className="max-lg:hidden">
           <Avatar>
             <AvatarImage
-              src="https://i.pinimg.com/736x/9a/5f/f0/9a5ff060152ceb9b8c4b5596cf81878c.jpg"
+              src={PROFILE_PIC_URL}
               alt="pp"
               className="w-10 h-10 rounded-full border"
             />
