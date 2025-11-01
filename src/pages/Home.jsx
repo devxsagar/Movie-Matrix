@@ -22,7 +22,7 @@ const Home = () => {
 
   return (
     <div >
-      <Hero trendingData={trendingData} />
+      <Hero data={trendingData} />
     </div>
   );
 };
