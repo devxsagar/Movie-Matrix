@@ -14,7 +14,7 @@ const SectionCarousel = ({ data }) => {
   const screen = useScreenSize();
   return (
     <div>
-      <Carousel opts={{ slidesToScroll: screen > 1024 ? 4 : 2 }}>
+      <Carousel opts={{ slidesToScroll: screen > 1024 ? 4 : 2,  dragFree: true }}>
         <CarouselContent>
           {data.map((movie) => {
             return (
@@ -30,15 +30,15 @@ const SectionCarousel = ({ data }) => {
                     className="h-50 rounded-lg"
                   />
                   <p className="text-sm text-center tracking-wide leading-5 px-0.5 mt-2">
-                    {movie.title}
+                    {movie.title || movie.name}
                   </p>
                 </div>
               </CarouselItem>
             );
           })}
         </CarouselContent>
-        <CarouselPrevious className="bg-transparent" />
-        <CarouselNext className="bg-transparent" />
+        <CarouselPrevious className="bg-transparent max-lg:hidden" />
+        <CarouselNext className="bg-transparent max-lg:hidden" />
       </Carousel>
     </div>
   );

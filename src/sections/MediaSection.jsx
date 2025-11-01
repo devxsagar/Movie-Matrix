@@ -3,9 +3,9 @@ import React from "react";
 import SectionHeader from "@/components/SectionHeader";
 import SectionCarousel from "@/components/SectionCarousel";
 
-const MediaSection = ({ title, category, mediaType }) => {
+const MediaSection = ({ title, category, mediaType, page = 1 }) => {
   // Fetch  data
-  const data = useSectionFetch({ category, mediaType });
+  const data = useSectionFetch({ category, mediaType, page });
 
   if (!data) {
     return;
