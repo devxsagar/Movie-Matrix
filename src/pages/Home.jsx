@@ -3,28 +3,17 @@ import { API_OPTIONS } from "@/utils/constant";
 import React, { useEffect, useState } from "react";
 import Details from "./Details";
 import MediaSection from "@/sections/MediaSection";
+import useSectionFetch from "@/hooks/useSectionFetch";
 
 
 const Home = () => {
-  const [trendingData, setTrendingData] = useState(null);
-
-  const getData = async () => {
-    const fetchData = await fetch(
-      "https://api.themoviedb.org/3/trending/all/day?language=en-US",
-      API_OPTIONS
-    );
-    const data = await fetchData.json();
-    setTrendingData(data.results);
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
+  const trendingData = useSectionFetch({ category: "trending", mediaType: "all" });
 
   return (
     <div>
       <Hero data={trendingData} />
       <MediaSection title="trending movies" category="trending" mediaType="movie" />
+      <MediaSection title="popular movies" category="popular" mediaType="movie" />
       <MediaSection title="trending tv series" category="trending" mediaType="tv" />
     </div>
   );

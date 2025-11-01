@@ -26,6 +26,7 @@ const SectionCarousel = ({ data }) => {
                   <img
                     src={IMAGE_URL + movie.poster_path}
                     alt={movie.title}
+                    loading="lazy"
                     className="h-50 rounded-lg"
                   />
                   <p className="text-sm text-center tracking-wide leading-5 px-0.5 mt-2">
