@@ -1,0 +1,21 @@
+# Ignore build output
+dist
+build
+
+# Node dependencies
+node_modules
+
+# Environment files
+.env
+.env.local
+
+# Compiled / generated files
+package-lock.json
+yarn.lock
+
+# Logs
+*.log
+
+# Misc
+coverage
+public
