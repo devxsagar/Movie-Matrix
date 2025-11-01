@@ -14,7 +14,7 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="relative p-6 flex items-center justify-between border">
+    <nav className="relative p-6 flex items-center justify-between rounded-3xl mt-5 backdrop-blur-lg">
       <h1 className="text-2xl font-bold">Movie Matrix</h1>
 
       {/* Links for Desktop */}
