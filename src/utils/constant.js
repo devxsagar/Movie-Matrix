@@ -10,7 +10,7 @@ export const API_OPTIONS = {
 export const NAV_LINKS = [
   { name: "Home", href: "/" },
   { name: "TV Shows", href: "/tv-shows" },
-  { name: "Movie", href: "/movie" },
+  { name: "Movies", href: "/movies" },
   { name: "Upcoming", href: "/upcoming" },
 ];
 

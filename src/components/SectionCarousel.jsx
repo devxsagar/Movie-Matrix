@@ -8,13 +8,14 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import PosterCard from "./PosterCard";
 
 const SectionCarousel = ({ data }) => {
   // Get screen size
   const screen = useScreenSize();
   return (
     <div>
-      <Carousel opts={{ slidesToScroll: screen > 1024 ? 4 : 2,  dragFree: true }}>
+      <Carousel opts={{ slidesToScroll: screen > 1024 ? 4 : 2, dragFree: true }}>
         <CarouselContent>
           {data.map((movie) => {
             return (
@@ -22,17 +23,11 @@ const SectionCarousel = ({ data }) => {
                 key={movie.id}
                 className="basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6 xl:basis-1/8 "
               >
-                <div>
-                  <img
-                    src={IMAGE_URL + movie.poster_path}
-                    alt={movie.title}
-                    loading="lazy"
-                    className="h-50 rounded-lg"
-                  />
-                  <p className="text-sm text-center tracking-wide leading-5 px-0.5 mt-2">
-                    {movie.title || movie.name}
-                  </p>
-                </div>
+                <PosterCard
+                  posterPath={movie.poster_path}
+                  movieTitle={movie.title}
+                  movieName={movie.name}
+                />
               </CarouselItem>
             );
           })}

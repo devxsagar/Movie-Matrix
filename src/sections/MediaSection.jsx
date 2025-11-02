@@ -12,9 +12,9 @@ const MediaSection = ({ title, category, mediaType, page = 1 }) => {
   }
 
   return (
-    <div className="pt-10 mb-20">
+    <div className="pt-10 mb-10">
       {/* Header */}
-      <SectionHeader title={title} />
+      <SectionHeader title={title} category={category} mediaType={mediaType} />
 
       {/* Carousel */}
       <SectionCarousel data={data} />
