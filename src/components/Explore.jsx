@@ -5,6 +5,7 @@ import BreadCrumbNavigation from "./BreadCrumbNavigation";
 import useSectionFetch from "@/hooks/useSectionFetch";
 import PosterCard from "./PosterCard";
 import PaginationBar from "./PaginationBar";
+import ExploreSkeleton from "./skeleton/ExploreSkeleton";
 
 const Explore = () => {
   const { mediaType, category } = useParams();
@@ -20,7 +21,7 @@ const Explore = () => {
   }, [res]);
 
   if (!data) {
-    return;
+    return <ExploreSkeleton />
   }
 
 
