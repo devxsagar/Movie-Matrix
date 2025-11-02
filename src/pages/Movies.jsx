@@ -8,7 +8,7 @@ const Movies = () => {
 
   return (
     <div>
-      <Banner data={bannerData}/>
+      <Banner data={bannerData} />
       <div className="mt-[65vh] lg:mt-[95vh]">
         <MediaSection title="popular" category="popular" mediaType="movie" page={1} />
       </div>
