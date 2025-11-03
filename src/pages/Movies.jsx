@@ -10,7 +10,9 @@ const Movies = () => {
     <div>
       <Banner data={bannerData} />
       <div className="mt-[65vh] lg:mt-[95vh]">
+        <MediaSection title="upcoming" category="upcoming" mediaType="movie" page={1} />
         <MediaSection title="popular" category="popular" mediaType="movie" page={1} />
+        <MediaSection title="top rated" category="top_rated" mediaType="movie" page={1} />
       </div>
     </div>
   );

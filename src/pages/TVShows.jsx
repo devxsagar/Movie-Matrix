@@ -10,8 +10,8 @@ const TVShows = () => {
       <Banner data={bannerData} />
       <div className="mt-[65vh] lg:mt-[95vh]">
         <MediaSection title="airing today" category="airing_today" mediaType="tv" />
-        <MediaSection title="popular" category="popular" mediaType="tv" />
         <MediaSection title="top rated" category="top_rated" mediaType="tv" />
+        <MediaSection title="popular" category="popular" mediaType="tv" />
       </div>
     </div>
   );

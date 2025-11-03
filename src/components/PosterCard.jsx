@@ -2,8 +2,7 @@ import React from "react";
 import { IMAGE_URL } from "@/utils/constant";
 
 const PosterCard = ({ posterPath, movieTitle, movieName }) => {
-  const loading = !posterPath || !movieTitle || !movieName;
-  console.log(loading);
+
   return (
     <div className="flex flex-col items-center">
       <img

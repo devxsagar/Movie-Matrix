@@ -14,13 +14,7 @@ import { Skeleton } from "./ui/skeleton";
 const Banner = ({ data }) => {
   // State to manage overview text expansion
   const [overviewClicked, setOverviewClicked] = useState(false);
-
-  // Handle case when trendingData is not yet available
-  // if (!data || data.length === 0) {
-  //   return (
-  //     <Skeleton className="absolute left-1/2 -translate-x-1/2 top-0 w-full max-w-[1536px] h-[70vh] lg:h-screen mb-[65vh] lg:mb-[95vh] border border-red" />
-  //   );
-  // }
+  
 
   return !data || data.length === 0 ? (
     <Skeleton className="absolute left-1/2 -translate-x-1/2 top-0 w-full max-w-[1536px] h-[70vh] lg:h-screen bg-black/70" />

@@ -7,6 +7,7 @@ const SectionHeader = ({ title, mediaType, category }) => {
 
   const handleViewAllButton = () => {
     navigate(`/explore/${mediaType}/${category}`);
+    window.scrollTo(top,"smooth");
   }
 
   return (

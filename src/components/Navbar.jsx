@@ -11,9 +11,10 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`relative z-10 px-4 py-5 lg:py-6 flex items-center justify-between rounded-full mt-5 `}
+      className={`relative z-10 flex items-center justify-between rounded-full mt-5 `}
     >
-      <h1 className="text-2xl font-bold">Movie Matrix</h1>
+      {/* <h1 className="text-2xl font-bold">Movie Matrix</h1> */}
+      <img src="/logo.png" alt="logo" className="w-8" />
 
       {/* Links for Desktop */}
       <div className="max-lg:hidden">
