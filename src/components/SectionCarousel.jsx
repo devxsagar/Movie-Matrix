@@ -1,6 +1,5 @@
 import React from "react";
 import useScreenSize from "@/hooks/useScreenSize";
-import { IMAGE_URL } from "@/utils/constant";
 import {
   Carousel,
   CarouselContent,
@@ -10,9 +9,10 @@ import {
 } from "@/components/ui/carousel";
 import PosterCard from "./PosterCard";
 
-const SectionCarousel = ({ data }) => {
+const SectionCarousel = ({ data, mediaType }) => {
   // Get screen size
   const screen = useScreenSize();
+  // console.log(data);
   return (
     <div>
       <Carousel opts={{ slidesToScroll: screen > 1024 ? 4 : 2, dragFree: true }}>
@@ -27,6 +27,8 @@ const SectionCarousel = ({ data }) => {
                   posterPath={movie.poster_path}
                   movieTitle={movie.title}
                   movieName={movie.name}
+                  mediaType={mediaType}
+                  id={movie.id}
                 />
               </CarouselItem>
             );

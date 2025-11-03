@@ -17,7 +17,7 @@ const MediaSection = ({ title, category, mediaType, page = 1 }) => {
       <SectionHeader title={title} category={category} mediaType={mediaType} />
 
       {/* Carousel */}
-      <SectionCarousel data={data} />
+      <SectionCarousel data={data} mediaType={mediaType} />
     </div>
   );
 };

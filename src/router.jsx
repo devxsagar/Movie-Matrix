@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import TVShows from "./pages/TVShows";
 import Movies from "./pages/Movies";
 import Explore from "./components/Explore";
+import Details from "./pages/Details";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,7 @@ const router = createBrowserRouter([
       { path: "/tv-shows", element: <TVShows /> },
       { path: "/movies", element: <Movies /> },
       { path: "/explore/:mediaType/:category", element: <Explore /> },
+      { path: "/details/:mediaType/:title/:id", element: <Details /> },
     ],
   },
 ]);

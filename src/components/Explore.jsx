@@ -40,6 +40,8 @@ const Explore = () => {
                 posterPath={item.poster_path}
                 movieTitle={item.title}
                 movieName={item.name}
+                id={item.id}
+                mediaType={mediaType}
               />
             );
           })}

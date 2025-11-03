@@ -1,10 +1,15 @@
 import React from "react";
 import { IMAGE_URL } from "@/utils/constant";
+import { useNavigate } from "react-router-dom";
 
-const PosterCard = ({ posterPath, movieTitle, movieName }) => {
+const PosterCard = ({ posterPath, movieTitle, movieName, mediaType, id }) => {
+  const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col items-center">
+    <div
+      className="flex flex-col items-center"
+      onClick={() => navigate(`/details/${mediaType}/${movieName || movieTitle}/${id}`)}
+    >
       <img
         src={IMAGE_URL + posterPath}
         alt={movieTitle || movieName}
