@@ -6,12 +6,13 @@ import ExploreMediaInfo from "@/components/ExploreMediaInfo";
 import useMediaCredits from "@/hooks/useMediaCredits";
 import ExploreCast from "@/sections/ExploreCast";
 import ExploreMediaImages from "@/sections/ExploreMediaImages";
+import ExploreSimilarMedia from "@/sections/ExploreSimilarMedia";
 
 const Details = () => {
   // Get details from explore and section carousel
   const { mediaType, title, id } = useParams();
 
-  const mediaDetails = useGetMediaDetails(mediaType, id);
+  const { data: mediaDetails, loading } = useGetMediaDetails(mediaType, id);
   const { directors, cast } = useMediaCredits(mediaType, id);
 
   if (!mediaDetails || !directors || !cast) {
@@ -40,6 +41,8 @@ const Details = () => {
       <ExploreCast cast={cast} />
 
       <ExploreMediaImages mediaType={mediaType} id={id} />
+
+      <ExploreSimilarMedia mediaType={mediaType} id={id} />
     </section>
   );
 };
