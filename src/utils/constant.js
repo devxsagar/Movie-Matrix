@@ -22,3 +22,5 @@ export const GITHUB_URL = "https://github.com/devxsagar/Moive-Matrix";
 export const LINKEDIN_URL = "https://www.linkedin.com/in/sagar-mitra19/";
 
 export const TWITTER_URL = "https://x.com/devxsagar";
+
+export const FALLBACK_PROFILE_PIC = "https://i.pinimg.com/736x/16/18/20/1618201e616f4a40928c403f222d7562.jpg";
