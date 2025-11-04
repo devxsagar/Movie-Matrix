@@ -1,7 +1,7 @@
 import useGetMediaImage from "@/hooks/useGetMediaImage";
 import { IMAGE_URL } from "@/utils/constant";
 import React, { useEffect, useState } from "react";
-import ShowMoreButton from "./ShowMoreButton";
+import ShowMoreButton from "../components/ShowMoreButton";
 
 const ExploreMediaImages = ({ mediaType, id }) => {
   const [imageLimit, setImageLimit] = useState(10);

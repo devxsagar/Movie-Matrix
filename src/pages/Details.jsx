@@ -4,8 +4,8 @@ import { IMAGE_URL } from "@/utils/constant";
 import useGetMediaDetails from "@/hooks/useGetMediaDetails";
 import ExploreMediaInfo from "@/components/ExploreMediaInfo";
 import useMediaCredits from "@/hooks/useMediaCredits";
-import ExploreCast from "@/components/ExploreCast";
-import ExploreMediaImages from "@/components/ExploreMediaImages";
+import ExploreCast from "@/sections/ExploreCast";
+import ExploreMediaImages from "@/sections/ExploreMediaImages";
 
 const Details = () => {
   // Get details from explore and section carousel
@@ -17,7 +17,6 @@ const Details = () => {
   if (!mediaDetails || !directors || !cast) {
     return <div>Loading...</div>;
   }
-
 
   return (
     <section className="pt-10 pb-20">
