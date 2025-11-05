@@ -10,16 +10,18 @@ import {
 import { Info, Play, Star } from "lucide-react";
 import { Button } from "./ui/button";
 import { Skeleton } from "./ui/skeleton";
+import Trailer from "@/sections/Trailer";
 
 const Banner = ({ data }) => {
   // State to manage overview text expansion
   const [overviewClicked, setOverviewClicked] = useState(false);
-  
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [showTrailer, setShowTrailer] = useState(false);
 
   return !data || data.length === 0 ? (
     <Skeleton className="absolute left-1/2 -translate-x-1/2 top-0 w-full max-w-[1536px] h-[70vh] lg:h-screen bg-black/70" />
   ) : (
-    <div >
+    <div>
       <div className="absolute left-1/2 -translate-x-1/2 top-0  w-full max-w-[1536px]">
         <Carousel className="relative">
           {/* Carousel Content */}
@@ -37,7 +39,7 @@ const Banner = ({ data }) => {
                       className=" w-full h-full object-cover object-center lg:object-top"
                     />
                     {/* Overlay */}
-                    <div className="absolute inset-0 z-80 w-full h-full bg-black/40" />
+                    <div className="absolute inset-0 z-50 w-full h-full bg-black/40" />
 
                     <div className="absolute left-0 bottom-0 z-80 w-full h-30 bg-linear-to-b from-transparent via-black/70 to-black" />
 
@@ -76,7 +78,13 @@ const Banner = ({ data }) => {
                       </div>
 
                       <div className="flex gap-4 mt-6 md:mt-8">
-                        <Button className=" bg-red text-white w-30 md:w-36 lg:w-48 py-5 md:py-6 lg:py-8 rounded-md text-xs md:text-sm lg:text-lg font-medium cursor-pointer">
+                        <Button
+                          className=" bg-red text-white w-30 md:w-36 lg:w-48 py-5 md:py-6 lg:py-8 rounded-md text-xs md:text-sm lg:text-lg font-medium cursor-pointer"
+                          onClick={() => {
+                            setSelectedItem(item);
+                            setShowTrailer(true);
+                          }}
+                        >
                           <Play />
                           Watch Trailer
                         </Button>
@@ -100,6 +108,15 @@ const Banner = ({ data }) => {
           <CarouselNext className="absolute right-5 bg-transparent" />
         </Carousel>
       </div>
+
+      {showTrailer && (
+        <Trailer
+          mediaType={selectedItem?.media_type}
+          id={selectedItem?.id}
+          setShowTrailer={setShowTrailer}
+          name={selectedItem?.title || selectedItem?.name}
+        />
+      )}
     </div>
   );
 };

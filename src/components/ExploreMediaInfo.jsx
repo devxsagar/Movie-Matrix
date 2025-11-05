@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import ExploreMediaRating from "./ExploreMediaRating";
 import ExploreMediaAdditionalInfo from "./ExploreMediaAdditionalInfo";
 import { Button } from "./ui/button";
 import { Play, Plus } from "lucide-react";
+import Trailer from "@/sections/Trailer";
 
-const ExploreMediaInfo = ({ mediaDetails, directors, cast, mediaType }) => {
+const ExploreMediaInfo = ({ mediaDetails, directors, cast, mediaType, id }) => {
+  const [showTrailer, setShowTrailer] = useState(false);
+
   const releaseDate = mediaDetails?.release_date || mediaDetails?.first_air_date;
-
-  console.log(mediaDetails);
 
   return (
     <div>
@@ -46,10 +47,12 @@ const ExploreMediaInfo = ({ mediaDetails, directors, cast, mediaType }) => {
         />
       </div>
 
+      {/* Buttons */}
       <div className="mt-15 space-x-5">
         <Button
           className="font-semibold px-5 py-8 text-white text-base lg:text-lg bg-red hover:bg-red/80 cursor-pointer"
           variant="secondary"
+          onClick={() => setShowTrailer(true)}
         >
           <Play className="mr-1" />
           Watch Trailer
@@ -62,6 +65,8 @@ const ExploreMediaInfo = ({ mediaDetails, directors, cast, mediaType }) => {
           Watchlist
         </Button>
       </div>
+
+      {showTrailer && <Trailer mediaType={mediaType} id={id} setShowTrailer={setShowTrailer} name={mediaDetails?.title || mediaDetails?.name} />}
     </div>
   );
 };

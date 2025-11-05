@@ -41,6 +41,7 @@ const Details = () => {
           directors={directors}
           cast={cast}
           mediaType={mediaType}
+          id={id}
         />
       </div>
 

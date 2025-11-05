@@ -5,8 +5,6 @@ import React, { useState } from "react";
 const ExploreCast = ({ cast }) => {
   const [showMore, setShowMore] = useState(false);
 
-  console.log(cast);
-
   return (
     <div className="mt-15">
       <h2 className="text-2xl font-semibold tracking-tight">Cast</h2>
