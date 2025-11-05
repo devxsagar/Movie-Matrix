@@ -5,12 +5,6 @@ const PageNotFound = () => {
   return (
     <div
       className="h-screen flex flex-col items-center justify-center text-center bg-black text-white px-6"
-      style={{
-        "--color-red": "#E50914",
-        "--color-black": "#141414",
-        "--color-gray": "#B3B3B3",
-        "--color-white": "#ffffff",
-      }}
     >
       <h1 className="text-[8rem] font-bold leading-none text-red">404</h1>
 

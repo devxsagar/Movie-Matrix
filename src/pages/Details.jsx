@@ -16,7 +16,7 @@ const Details = () => {
   const { data: mediaDetails, loading } = useGetMediaDetails(mediaType, id);
   const { directors, cast } = useMediaCredits(mediaType, id);
 
-  if (!mediaDetails || !directors || !cast) {
+  if (loading || !directors || !cast) {
     return <div>Loading...</div>;
   }
 
@@ -36,7 +36,12 @@ const Details = () => {
         </div>
 
         {/* Movie or Series Information */}
-        <ExploreMediaInfo mediaDetails={mediaDetails} directors={directors} cast={cast} />
+        <ExploreMediaInfo
+          mediaDetails={mediaDetails}
+          directors={directors}
+          cast={cast}
+          mediaType={mediaType}
+        />
       </div>
 
       <ExploreCast cast={cast} />

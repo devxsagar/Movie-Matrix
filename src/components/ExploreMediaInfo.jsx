@@ -4,8 +4,10 @@ import ExploreMediaAdditionalInfo from "./ExploreMediaAdditionalInfo";
 import { Button } from "./ui/button";
 import { Play, Plus } from "lucide-react";
 
-const ExploreMediaInfo = ({ mediaDetails, directors, cast }) => {
+const ExploreMediaInfo = ({ mediaDetails, directors, cast, mediaType }) => {
   const releaseDate = mediaDetails?.release_date || mediaDetails?.first_air_date;
+
+  console.log(mediaDetails);
 
   return (
     <div>
@@ -36,16 +38,27 @@ const ExploreMediaInfo = ({ mediaDetails, directors, cast }) => {
       </p>
 
       <div className="mt-5 text-base lg:text-lg">
-        <ExploreMediaAdditionalInfo mediaDetails={mediaDetails} directors={directors} cast={cast} />
+        <ExploreMediaAdditionalInfo
+          mediaDetails={mediaDetails}
+          directors={directors}
+          cast={cast}
+          mediaType={mediaType}
+        />
       </div>
 
       <div className="mt-15 space-x-5">
-        <Button className="font-semibold px-5 py-8 text-white text-base lg:text-lg bg-red hover:bg-red/80 cursor-pointer" variant="secondary">
+        <Button
+          className="font-semibold px-5 py-8 text-white text-base lg:text-lg bg-red hover:bg-red/80 cursor-pointer"
+          variant="secondary"
+        >
           <Play className="mr-1" />
           Watch Trailer
         </Button>
-        <Button className="font-semibold px-5 py-8 text-base lg:text-lg cursor-pointer" variant="secondary">
-          <Plus className="mr-1"  />
+        <Button
+          className="font-semibold px-5 py-8 text-base lg:text-lg cursor-pointer"
+          variant="secondary"
+        >
+          <Plus className="mr-1" />
           Watchlist
         </Button>
       </div>
