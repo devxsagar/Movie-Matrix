@@ -35,7 +35,7 @@ const SearchResult = ({ inputRef, showSearchResultBox, setShowSearchResultBox, s
     showSearchResultBox && (
       <div
         ref={inputRef}
-        className="absolute top-10 left-0 w-full min-h-[10vh] max-h-[60vh] bg-white/50 overflow-y-scroll  rounded-xl text-black p-5"
+        className="absolute top-10 left-0 w-full min-h-[10vh] max-h-[60vh] bg-white/50 overflow-y-scroll scrollbar-none  rounded-xl text-black p-5"
       >
         {debouncedQuery === "" ? (
           <div className="text-center">Search for a movie or show</div>
