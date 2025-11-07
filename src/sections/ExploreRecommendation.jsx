@@ -5,7 +5,7 @@ import React from "react";
 const ExploreRecommendation = ({mediaType, id}) => {
     const {data} = useRelatedMedia(mediaType, id, "recommendations");
   return (
-    <div>
+    data.length > 0 &&  <div>
       <div className="mt-15">
         <h2 className="text-2xl font-semibold tracking-tight mb-2">
           Recommendations

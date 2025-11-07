@@ -19,6 +19,7 @@ export const Navbar = () => {
       const handleClick = (e) => {
         if (ref.current && !ref.current.contains(e.target)) {
           cb();
+          setSearchQuery("");
         }
       };
 
