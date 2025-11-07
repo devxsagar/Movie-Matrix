@@ -21,12 +21,13 @@ const SectionHeader = ({ title, mediaType, category }) => {
         whileHover="hovered"
       >
         View all
-        <motion.div
+        <motion.span
           variants={{ initial: { x: 0 }, hovered: { x: 2 } }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
+          className=" inline-block "
         >
           <ArrowRight className="w-5 h-5" />
-        </motion.div>
+        </motion.span>
       </motion.p>
     </motion.div>
   );

@@ -13,7 +13,7 @@ const PosterCard = ({ posterPath, movieTitle, movieName, mediaType, id, releaseD
   };
 
   const updatedReleaseDate = releaseDate?.split("-")[0];
-  console.log(updatedReleaseDate);
+
 
   return (
     <motion.div

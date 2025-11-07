@@ -1,13 +1,22 @@
 import React from "react";
-import { Skeleton } from "../ui/skeleton";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const PosterCardSkeleton = () => {
   return (
-    <div className="flex flex-col items-center">
-      <Skeleton className="h-50 w-30" />
-      <Skeleton className="w-20 h-5 mt-2" />
+    <div className="flex flex-col">
+      {/* Poster */}
+      <Skeleton className="h-50 w-full rounded-lg" />
+
+      {/* Title */}
+      <Skeleton className="h-4 w-24 mt-2 rounded" />
+
+      {/* Release year + rating */}
+      <div className="flex justify-between items-center mt-2">
+        <Skeleton className="h-3 w-10 rounded" />
+        <Skeleton className="h-3 w-14 rounded" />
+      </div>
     </div>
   );
 };
 
-export default PosterCardSkeleton;
+export default PosterCardSkeleton;  
