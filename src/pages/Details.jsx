@@ -9,6 +9,7 @@
   import ExploreSimilarMedia from "@/sections/ExploreSimilarMedia";
   import ExploreRecommendation from "@/sections/ExploreRecommendation";
   import DetailsSkeleton from "@/components/skeleton/DetailsSkeleton";
+import ExploreReview from "@/sections/ExploreReview";
 
   const Details = () => {
     // Get details from explore and section carousel
@@ -51,6 +52,8 @@
         <ExploreSimilarMedia mediaType={mediaType} id={id} />
 
         <ExploreRecommendation mediaType={mediaType} id={id} />
+
+        <ExploreReview mediaType={mediaType} id={id} />
       </section>
     );
   };
