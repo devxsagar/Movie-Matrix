@@ -2,8 +2,9 @@ import React from "react";
 import { IMAGE_URL } from "@/utils/constant";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Star } from "lucide-react";
 
-const PosterCard = ({ posterPath, movieTitle, movieName, mediaType, id }) => {
+const PosterCard = ({ posterPath, movieTitle, movieName, mediaType, id, releaseDate, rating }) => {
   const navigate = useNavigate();
 
   const handleNavigation = () => {
@@ -11,12 +12,17 @@ const PosterCard = ({ posterPath, movieTitle, movieName, mediaType, id }) => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const updatedReleaseDate = releaseDate?.split("-")[0];
+  console.log(updatedReleaseDate);
+
   return (
-    <motion.div className="flex flex-col items-center cursor-pointer" onClick={handleNavigation}
-    initial={{ scale: 1 }}
-    whileHover={{ scale: 0.95 }}
-    whileTap={{ scale: 0.9 }}
-    transition={{ type: "spring", stiffness: 400, damping: 17 }}
+    <motion.div
+      className="flex flex-col cursor-pointer"
+      onClick={handleNavigation}
+      initial={{ scale: 1 }}
+      whileHover={{ scale: 0.95 }}
+      whileTap={{ scale: 0.9 }}
+      transition={{ type: "spring", stiffness: 400, damping: 17 }}
     >
       <img
         src={IMAGE_URL + posterPath}
@@ -24,9 +30,18 @@ const PosterCard = ({ posterPath, movieTitle, movieName, mediaType, id }) => {
         loading="lazy"
         className="h-50 rounded-lg"
       />
-      <p className="text-sm text-center tracking-wide leading-5 px-0.5 mt-2">
+      <p className="text-sm line-clamp-1 text-left tracking-wide leading-5 px-0.5 mt-2">
         {movieTitle || movieName}
       </p>
+
+      {/* Released Year and Rating */}
+      <div className="flex items-center justify-between mt-2">
+        <span className="text-xs">{updatedReleaseDate}</span>
+        <div className="flex items-center">
+          <Star color="#facc15" fill="#facc15" size={12} />
+          <span className="text-xs text-gray ml-2">{rating?.toFixed(1) || "N/A"}</span>
+        </div>
+      </div>
     </motion.div>
   );
 };

@@ -12,7 +12,7 @@ import PosterCard from "./PosterCard";
 const SectionCarousel = ({ data, mediaType }) => {
   // Get screen size
   const screen = useScreenSize();
-  // console.log(data);
+ 
   return (
     <div>
       <Carousel opts={{ slidesToScroll: screen > 1024 ? 4 : 2, dragFree: true }}>
@@ -28,6 +28,8 @@ const SectionCarousel = ({ data, mediaType }) => {
                   movieTitle={movie.title}
                   movieName={movie.name}
                   mediaType={mediaType}
+                  releaseDate={movie.release_date}
+                  rating={movie.vote_average}
                   id={movie.id}
                 />
               </CarouselItem>
