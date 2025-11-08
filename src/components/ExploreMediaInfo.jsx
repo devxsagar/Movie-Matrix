@@ -4,10 +4,14 @@ import ExploreMediaAdditionalInfo from "./ExploreMediaAdditionalInfo";
 import { Button } from "./ui/button";
 import { Play, Plus } from "lucide-react";
 import Trailer from "@/sections/Trailer";
+import { useDispatch } from "react-redux";
+import { addMovieToList, addTvSeriesToList } from "@/store/myListSlice";
 
 const ExploreMediaInfo = ({ mediaDetails, directors, cast, mediaType, id }) => {
   const [showTrailer, setShowTrailer] = useState(false);
 
+  const dispatch = useDispatch();
+  
   const releaseDate = mediaDetails?.release_date || mediaDetails?.first_air_date;
 
   const runTimeForMovies =
@@ -22,6 +26,14 @@ const ExploreMediaInfo = ({ mediaDetails, directors, cast, mediaType, id }) => {
         "h " +
         (mediaDetails?.last_episode_to_air?.runtime % 60) +
         "min";
+
+  const handleWatchListButton = () => {
+    if(mediaType === "movie") {
+      dispatch(addMovieToList(mediaDetails));
+    } else {
+      dispatch(addTvSeriesToList(mediaDetails));
+    }
+  }
 
   return (
     <div>
@@ -73,6 +85,7 @@ const ExploreMediaInfo = ({ mediaDetails, directors, cast, mediaType, id }) => {
         <Button
           className="font-semibold px-5 py-8 text-base lg:text-lg cursor-pointer"
           variant="secondary"
+          onClick={handleWatchListButton}
         >
           <Plus className="mr-1" />
           Watchlist
