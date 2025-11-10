@@ -1,10 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import useGetTrailer from "@/hooks/useGetTrailer";
 import { X } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Trailer = ({ mediaType, id, setShowTrailer, name }) => {
   const { data, loading } = useGetTrailer(mediaType, id);
+
+  const trailerRef = useRef(null);
+
+  // Close trailer on click outside
+  useEffect(() => {
+    const handleClick = (e) => {
+      if (trailerRef.current && !trailerRef.current.contains(e.target)) {
+        setShowTrailer(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClick);
+    };
+  }, [setShowTrailer]);
 
   // Close trailer on Esc key
   useEffect(() => {
@@ -20,7 +37,7 @@ const Trailer = ({ mediaType, id, setShowTrailer, name }) => {
   }, [setShowTrailer]);
 
   return (
-    <div className="fixed z-90 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85vw] max-w-7xl h-[50vh] lg:h-[80vh]">
+    <div ref={trailerRef} className="fixed z-90 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85vw] max-w-7xl h-[50vh] lg:h-[80vh]">
       {/* Close Button */}
       <div className="flex justify-end mb-2">
         <motion.button
@@ -48,7 +65,7 @@ const Trailer = ({ mediaType, id, setShowTrailer, name }) => {
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
+                referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
               ></iframe>
             </div>
