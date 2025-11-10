@@ -6,9 +6,8 @@ import { IMAGE_URL } from "@/utils/constant";
 import SearchResultCardSkeleton from "./skeleton/SearchResultCardSkeleton";
 
 const SearchResult = ({
-  inputRef,
   showSearchResultBox,
-  setShowSearchResultBox,
+  setShowSearchBox,
   searchQuery,
   setSearchQuery,
 }) => {
@@ -42,15 +41,14 @@ const SearchResult = ({
   const handleNavigation = (mediaType, movieTitle, movieName, id) => {
     navigate(`/details/${mediaType}/${movieName || movieTitle}/${id}`);
     window.scrollTo({ top: 0, behavior: "smooth" });
-    setShowSearchResultBox(false);
+    setShowSearchBox(false);
     setSearchQuery("");
   };
 
   return (
     showSearchResultBox && (
       <motion.div
-        ref={inputRef}
-        className="absolute top-10 left-0 w-full min-h-[10vh] max-h-[60vh] bg-black/40 backdrop-blur-lg overflow-y-scroll scrollbar-none  rounded-xl text-gray p-5"
+        className=" w-full overflow-y-scroll scrollbar-none  rounded-xl text-gray pb-2"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: "easeInOut" }}

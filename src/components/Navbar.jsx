@@ -7,10 +7,12 @@ import { RxCross2, RxHamburgerMenu } from "react-icons/rx";
 import { PROFILE_PIC_URL } from "@/utils/constant";
 import SearchResult from "./SearchResult";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export const Navbar = () => {
   const [menuClicked, setMenuClicked] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [showSearchBox, setShowSearchBox] = useState(false);
   const [showSearchResultBox, setShowSearchResultBox] = useState(false);
 
   const inputRef = useRef(null);
@@ -19,7 +21,7 @@ export const Navbar = () => {
   useEffect(() => {
     const handleClick = (e) => {
       if (inputRef.current && !inputRef.current.contains(e.target)) {
-        setShowSearchResultBox(false);
+        setShowSearchBox(false);
         setSearchQuery("");
       }
     };
@@ -29,7 +31,7 @@ export const Navbar = () => {
     return () => {
       document.removeEventListener("mousedown", handleClick);
     };
-  }, [showSearchResultBox]);
+  }, [showSearchBox]);
 
   return (
     <nav className={`relative z-10 flex items-center justify-between rounded-full mt-5 `}>
@@ -44,25 +46,49 @@ export const Navbar = () => {
 
       {/* Search Bar, Profile Picture (for Desktop) and Hamburger Menu(for Mobile) */}
       <div className="flex items-center gap-6">
-        <div className="relative flex items-center">
-          <Input
-            ref={inputRef}
-            placeholder="Search movies..."
-            className="pl-10 w-45 max-sm:h-7 text-xs md:text-base sm:w-xs outline-none rounded-full"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            onFocus={() => setShowSearchResultBox(true)}
-          />
-          <IoSearch className="absolute top-1/2 -translate-y-1/2 left-4  md:left-3 max-sm:w-3 max-sm:h-3 " />
+        <motion.div
+          className="border"
+          initial={{ scale: 1 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{duration: 0.3, ease: "easeInOut"}}
+        >
+          {!showSearchBox && (
+            <IoSearch className="w-5 h-5 cursor-pointer" onClick={() => setShowSearchBox(true)} />
+          )}
+        </motion.div>
 
-          <SearchResult
-            inputRef={inputRef}
-            searchQuery={searchQuery}
-            setSearchQuery={setSearchQuery}
-            showSearchResultBox={showSearchResultBox}
-            setShowSearchResultBox={setShowSearchResultBox}
-          />
-        </div>
+        {/* Pop Up Search Box */}
+        {showSearchBox && (
+          <motion.div
+            ref={inputRef}
+            className="fixed top-1/5 md:top-1/5 xl:top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/6 md:-translate-y-1/5 xl:-translate-y-1/5 z-50 w-[70vw]  xl:w-[40vw] max-h-[50vh] lg:max-h-[60vh] xl:max-h-[70vh] backdrop-blur-3xl px-5 py-5 rounded-2xl flex flex-col gap-y-5 items-center justify-start overflow-y-scroll scrollbar-none"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            <div className="relative w-full">
+              <Input
+                placeholder="Search movies..."
+                className="pl-10 bg-white/70! text-black  text-xs md:text-base w-full outline-none rounded-full"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onFocus={() => setShowSearchResultBox(true)}
+              />
+
+              <IoSearch
+                color="black"
+                className="absolute top-1/2 -translate-y-1/2 left-4  md:left-3 max-sm:w-3 max-sm:h-3 "
+              />
+            </div>
+            <SearchResult
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+              showSearchResultBox={showSearchResultBox}
+              setShowSearchBox={setShowSearchBox}
+            />
+          </motion.div>
+        )}
 
         {/* Profile Picture */}
         <div className="max-lg:hidden">
