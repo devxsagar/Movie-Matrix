@@ -1,7 +1,8 @@
+import React, { useEffect, useState } from "react";
 import useGetMediaImage from "@/hooks/useGetMediaImage";
 import { IMAGE_URL } from "@/utils/constant";
-import React, { useEffect, useState } from "react";
 import ShowMoreButton from "../components/ShowMoreButton";
+import { motion } from "framer-motion";
 
 const ExploreMediaImages = ({ mediaType, id }) => {
   const [imageLimit, setImageLimit] = useState(10);
@@ -23,7 +24,13 @@ const ExploreMediaImages = ({ mediaType, id }) => {
   if (error) return <div>{error}</div>;
 
   return (
-    <div className="mt-15">
+    <motion.div
+      className="mt-15"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, ease: [0.4, 0.0, 0.2, 1] }}
+    >
       <h2 className="text-2xl font-semibold tracking-tight">Images</h2>
       {loading ? (
         <div className="mt-2">Loading...</div>
@@ -53,7 +60,7 @@ const ExploreMediaImages = ({ mediaType, id }) => {
         showMore={showMore}
         setShowMore={setShowMore}
       />
-    </div>
+    </motion.div>
   );
 };
 

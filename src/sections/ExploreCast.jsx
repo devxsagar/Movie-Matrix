@@ -1,13 +1,20 @@
+import React, { useState } from "react";
+import { motion } from "framer-motion";
 import { FALLBACK_PROFILE_PIC, IMAGE_URL } from "@/utils/constant";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
-import React, { useState } from "react";
 
 const ExploreCast = ({ cast }) => {
   const [showMore, setShowMore] = useState(false);
 
   return (
     cast?.length > 0 && (
-      <div className="mt-15">
+      <motion.div
+        className="mt-15"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: [0.4, 0.0, 0.2, 1] }}
+      >
         <h2 className="text-2xl font-semibold tracking-tight">Cast</h2>
         {/* Cast List */}
         <div className="grid items-start grid-cols-3 md:grid-cols-6 lg:grid-cols-7  xl:grid-cols-9  gap-5 mt-2 ">
@@ -51,7 +58,7 @@ const ExploreCast = ({ cast }) => {
             </button>
           )}
         </div>
-      </div>
+      </motion.div>
     )
   );
 };

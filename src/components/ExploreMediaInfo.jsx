@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ExploreMediaRating from "./ExploreMediaRating";
 import ExploreMediaAdditionalInfo from "./ExploreMediaAdditionalInfo";
 import { Button } from "./ui/button";
-import { Bookmark,  Play } from "lucide-react";
+import { Bookmark, Play } from "lucide-react";
 import Trailer from "@/sections/Trailer";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -11,13 +11,9 @@ import {
   removeMovieFromList,
   removeTvSeriesFromList,
 } from "@/store/myListSlice";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@radix-ui/react-tooltip";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@radix-ui/react-tooltip";
 import { toast } from "sonner";
+import { motion } from "framer-motion";
 
 const ExploreMediaInfo = ({ mediaDetails, directors, cast, mediaType, id }) => {
   const [showTrailer, setShowTrailer] = useState(false);
@@ -53,7 +49,7 @@ const ExploreMediaInfo = ({ mediaDetails, directors, cast, mediaType, id }) => {
       } else {
         dispatch(addTvSeriesToList(mediaDetails));
       }
-      toast.success(` ${mediaDetails?.title || mediaDetails?.name} Added to Watchlist` );
+      toast.success(` ${mediaDetails?.title || mediaDetails?.name} Added to Watchlist`);
     }
   };
 
@@ -63,7 +59,11 @@ const ExploreMediaInfo = ({ mediaDetails, directors, cast, mediaType, id }) => {
     movies.find((movie) => movie.id === Number(id)) || tvSeries.find((tv) => tv.id === Number(id));
 
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0, x: 40 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.6, ease: [0.4, 0.0, 0.2, 1], delay: 0.1 }}
+    >
       <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight">
         {mediaDetails?.title || mediaDetails?.name}
       </h2>
@@ -132,7 +132,7 @@ const ExploreMediaInfo = ({ mediaDetails, directors, cast, mediaType, id }) => {
           <TooltipProvider delayDuration={300}>
             <Tooltip>
               <TooltipTrigger asChild>
-               <button
+                <button
                   className=" p-4 rounded-full bg-gray/20 cursor-pointer"
                   onClick={() => handleWatchListButton("add")}
                 >
@@ -156,7 +156,7 @@ const ExploreMediaInfo = ({ mediaDetails, directors, cast, mediaType, id }) => {
           name={mediaDetails?.title || mediaDetails?.name}
         />
       )}
-    </div>
+    </motion.div>
   );
 };
 

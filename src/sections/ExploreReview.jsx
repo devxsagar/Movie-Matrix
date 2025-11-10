@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ReviewCard from "@/components/ReviewCard";
 import useReviews from "@/hooks/useReviews";
+import { motion } from "framer-motion";
 
 const ExploreReview = ({ mediaType, id }) => {
   const [showMore, setShowMore] = useState(false);
@@ -9,7 +10,13 @@ const ExploreReview = ({ mediaType, id }) => {
 
   return (
     reviews.length > 0 && (
-      <div className="mt-15">
+      <motion.div
+        className="mt-15"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: [0.4, 0.0, 0.2, 1] }}
+      >
         <h2 className="text-2xl font-semibold tracking-tight mb-2">Reviews</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 pt-4 place-items-center">
           {reviews?.slice(0, showMore ? reviews.length : 3).map((review) => {
@@ -36,7 +43,7 @@ const ExploreReview = ({ mediaType, id }) => {
             </button>
           </div>
         )}
-      </div>
+      </motion.div>
     )
   );
 };
