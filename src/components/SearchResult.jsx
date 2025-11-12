@@ -4,13 +4,9 @@ import { motion } from "framer-motion";
 import useSearchMedia from "@/hooks/useSearchMedia";
 import { IMAGE_URL } from "@/utils/constant";
 import SearchResultCardSkeleton from "./skeleton/SearchResultCardSkeleton";
+import { Star } from "lucide-react";
 
-const SearchResult = ({
-  showSearchResultBox,
-  setShowSearchBox,
-  searchQuery,
-  setSearchQuery,
-}) => {
+const SearchResult = ({ showSearchResultBox, setShowSearchBox, searchQuery, setSearchQuery }) => {
   const [debouncedQuery, setDebouncedQuery] = useState("");
   const [page, setPage] = useState(1);
 
@@ -64,26 +60,46 @@ const SearchResult = ({
                 return (
                   <motion.div
                     key={media?.id}
-                    className="flex items-center gap-x-4 bg-white/80 rounded-lg p-2 cursor-pointer"
+                    className="flex items-start gap-x-4 bg-white/80 rounded-lg p-2 cursor-pointer"
                     onClick={() =>
                       handleNavigation(media?.media_type, media?.title, media?.name, media?.id)
                     }
                     initial={{ opacity: 0, scale: 0.8, color: "#3d3c3c" }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    whileHover={{ scale: 0.95, color: "#e50914", }}
-                    whileTap={{ scale: 0.90 }}
+                    whileHover={{ scale: 0.95, color: "#e50914" }}
+                    whileTap={{ scale: 0.9 }}
                     transition={{ duration: 0.5, ease: "easeInOut" }}
                   >
                     <img
                       src={IMAGE_URL + media?.poster_path}
                       alt={media?.title || media?.name}
-                      className="h-30 rounded-lg"
+                      className="h-25 md:h-30 rounded-lg"
                     />
                     <div>
-                      <p className="font-bold text-xs md:text-base">
+                      <div className="mb-1 flex items-center gap-x-2">
+                        {(media?.release_date || media?.first_air_date) && (
+                          <p className="text-xs">
+                            {media?.release_date?.split("-")[0] ||
+                              media?.first_air_date?.split("-")[0]}
+                          </p>
+                        )}
+                        {media?.release_date && <span>·</span>}
+                        {media?.media_type && (
+                          <p className="text-xs">
+                            {media?.media_type === "movie" ? "Movie" : "Series"}
+                          </p>
+                        )}
+                        {media?.vote_average && <span>·</span>}
+                        <p className="text-xs flex items-center gap-x-1">
+                          <Star color="#facc15" fill="#facc15" size={12} />{" "}
+                          {media?.vote_average?.toFixed(1)}
+                        </p>
+                      </div>
+                      <h2 className="font-bold text-xs md:text-base">
                         {media?.title || media?.name}
-                      </p>
+                      </h2>
+                      <p className="text-[0.7rem] md:text-xs line-clamp-2 mt-1">{media?.overview}</p>
                     </div>
                   </motion.div>
                 );

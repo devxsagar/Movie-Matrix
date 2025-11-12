@@ -68,7 +68,7 @@ export const Navbar = () => {
         {showSearchBox && (
           <motion.div
             ref={searchBoxRef}
-            className="fixed top-1/5 md:top-1/5 xl:top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/6 md:-translate-y-1/5 xl:-translate-y-1/5 z-50 w-[70vw]  xl:w-[40vw] max-h-[50vh] lg:max-h-[60vh] xl:max-h-[70vh] backdrop-blur-3xl px-5 py-5 rounded-2xl flex flex-col gap-y-5 items-center justify-start overflow-y-scroll scrollbar-none"
+            className="fixed top-1/5 md:top-1/5 xl:top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/6 md:-translate-y-1/5 xl:-translate-y-1/5 z-50 w-[70vw]  xl:w-[40vw] max-h-[60vh] lg:max-h-[70vh] xl:max-h-[80vh] backdrop-blur-3xl px-5 py-5 rounded-2xl flex flex-col gap-y-5 items-center justify-start overflow-y-scroll scrollbar-none"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
