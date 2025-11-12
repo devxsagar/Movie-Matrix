@@ -41,9 +41,9 @@ export const Navbar = () => {
   }, [showSearchBox]);
 
   return (
-    <nav className={`relative z-10 flex items-center justify-between rounded-full mt-5 `}>
+    <nav className={`relative z-10 flex items-center justify-between rounded-full mt-2`}>
       <Link to="/">
-        <img src="/logo.png" alt="logo" className="h-4 sm:h-6" />
+        <img src="/logo.png" alt="logo" className="h-12 sm:h-20" />
       </Link>
 
       {/* Links for Desktop */}
