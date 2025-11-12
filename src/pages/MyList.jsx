@@ -68,16 +68,16 @@ const MyList = () => {
                   releaseDate={item.release_date || item.first_air_date}
                   rating={item.vote_average}
                 />
-                <motion.div
-                  initial={{ scale: 1 }}
-                  whileHover={{ scale: 0.95 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="rounded-full mt-2 cursor-pointer  flex items-center justify-center"
-                  onClick={() => handleRemove(item.id, item.title, item.name)}
-                >
-                  <Button variant="destructive" className="w-full cursor-pointer">
+                <motion.div className="mt-2 cursor-pointer  flex items-center justify-center">
+                  <motion.button
+                    className="w-full bg-transparent hover:bg-transparent font-light text-xs text-white  rounded-2xl py-2 cursor-pointer"
+          
+                    whileHover={{ color: "#ffffff", backgroundColor: "#e50914"}}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    onClick={() => handleRemove(item.id, item.title, item.name)}
+                  >
                     Remove
-                  </Button>
+                  </motion.button>
                 </motion.div>
               </motion.div>
             );
